@@ -97,11 +97,12 @@ export class InputHandler{
         this.inputState=inputState;
         
         this.input.delegate.addFunction(() => this.updateCommandsList());
-        //this.input.delegate.addFunction(this.updateCommandsList.bind(this));      option 2
 
         this.init();
 
     }
+
+      // check if the keys that got pressed are in this player's dictionary
     updateCommandsList(){
         this.commandsList.splice(0, this.commandsList.length); 
         this.input.keys.forEach(e => {
@@ -113,6 +114,8 @@ export class InputHandler{
     stop(){
         this.hashKeys.clear();       
     }
+      
+       // creating a translator from each player's keys to game's commands
     init(){
         if(this.inputState===inputStates.PLAYER_1){
             this.hashKeys.set('ArrowUp',Commands.JUMP);
